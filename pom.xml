@@ -67,6 +67,5 @@
 
 	<modules>
 		<module>UserServices</module>
-		<module>MovieServices</module>
 	</modules>
 </project>
