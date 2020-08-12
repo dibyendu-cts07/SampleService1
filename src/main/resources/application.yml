@@ -1,0 +1,9 @@
+server:
+      port: 8081
+
+# Specify the DNS URI of your Azure Cosmos DB.
+azure:
+ cosmosdb:
+  uri: https://springdb.documents.azure.com:443/
+  key: N8Xh3Kp1gfztCqv0Td7vGj5ZAub1D1Lw9U7cJU3i4P8PpzqddYEj0ZblxlpxoI4cZGcWfEGLZ50h8tXqHm3z5Q==
+  database: movieDb
