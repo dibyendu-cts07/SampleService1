@@ -1,5 +1,6 @@
 package com.cts.sr.moviecruiser.user.controller;
 
+import java.util.Base64;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,6 @@ import com.cts.sr.moviecruiser.user.service.JWTTokenGenerator;
 import com.cts.sr.moviecruiser.user.service.UserService;
 import com.cts.sr.moviecruiser.user.utils.Constants;
 import com.cts.sr.moviecruiser.user.utils.ErrorCodes;
-
-import io.swagger.annotations.Api;
 
 @RestController
 @EnableWebMvc
@@ -79,7 +78,8 @@ public class UserController implements Constants {
 			if (StringUtils.isEmpty(userId) || StringUtils.isEmpty(password)) 
 				return new ResponseEntity<ErrorCodes>(ErrorCodes.USER_ID_PASSWORD_EMPTY, HttpStatus.OK);
 
-			User user = userService.find(userId, password);
+			String encodedPassword = Base64.getEncoder().encodeToString(password.getBytes());
+			User user = userService.find(userId, encodedPassword);
 			
 			if (user == null) {
 				return new ResponseEntity<ErrorCodes>(ErrorCodes.USER_DOES_NOT_EXIST, HttpStatus.OK);

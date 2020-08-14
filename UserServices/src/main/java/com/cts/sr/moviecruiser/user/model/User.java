@@ -1,5 +1,6 @@
 package com.cts.sr.moviecruiser.user.model;
 
+import java.util.Base64;
 import java.util.Date;
 
 import org.springframework.data.annotation.Id;
@@ -97,6 +98,6 @@ public class User {
 		if (user.getEmail() != null)
 			this.setEmail(user.getEmail());
 		if (user.getPassword() != null)
-			this.setPassword(user.getPassword());
+			this.setPassword(Base64.getEncoder().encodeToString(user.getPassword().getBytes()));
 	}
 }
